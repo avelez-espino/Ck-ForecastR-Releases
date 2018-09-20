@@ -1,17 +1,14 @@
 ## Ck-ForecastR-Releases
 Repository for major releases, feedback, and bug reports.
 
-*Note*: 
-
-The code for the *ForecastR* package and is still under development, and
+*Note*: The code for the *ForecastR* package and is still under development, and
 does not live here. When we get to a major release milestone, we will make the
-code available here. 
-
-This repository is where the development team interacts with the End User Community.
+code available here.  This repository is where the development team interacts with the End User Community.
 
 
 ### What would you like to do?
 
+Note: The links below will take you away from this page, unless you open them with "Right Click -> Open in New Tab".
 
 #### I would like to play with the latest prototype
 
