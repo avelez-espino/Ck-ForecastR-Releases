@@ -13,7 +13,7 @@ Note: The links below will take you away from this page, unless you open them wi
 #### I would like to play with the latest prototype
 
 * Go to the [*ForecastR* App](https://solv-code.shinyapps.io/forecastr/)
-* Download a zip folder (*To be included - ETA Spring 2019*)
+* Download a [zip folder](https://github.com/avelez-espino/Ck-ForecastR-Releases/blob/master/Zipped%20Releases/CK_ForecastR_Prototype2018_09_20.zip) 
 * Install the package (*To be included - ETA TBD*)
 
 #### I would like to find out more about *ForecastR*
