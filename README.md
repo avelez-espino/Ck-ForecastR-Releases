@@ -5,6 +5,11 @@ Repository for major releases, feedback, and bug reports.
 does not live here. Whenever we get to a major release milestone, we make the
 code available here.  This repository is where the development team interacts with the End User Community.
 
+*ForecastR* is available in 2 configurations:
+
+* Shiny App: Interactive interface for exploring and ranking alternative forecast models.
+* R Package: Command line access to the computational engine.
+
 
 ### What would you like to do?
 
@@ -12,9 +17,10 @@ Note: The links below will take you away from this page, unless you open them wi
 
 #### I would like to play with the latest prototype
 
-* Go to the [*ForecastR* App](https://solv-code.shinyapps.io/forecastr/)
-* Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_11.zip) (Open this link in a new tab, then click the *Download* button)
+* Run the app on the server: Go to the [*ForecastR* App](https://solv-code.shinyapps.io/forecastr/)
 * Install the package (*To be included - ETA TBD*)
+* Run the app locally or access the functions: * Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_11.zip) (Open this link in a new tab, then click the *Download* button)
+
 
 #### I would like to find out more about *ForecastR*
 
@@ -24,7 +30,7 @@ and planned features.
 Notable pages are:
 
 * [About](https://github.com/avelez-espino/Ck-ForecastR-Releases/wiki/1---About)
-* [Proposed Structure](https://github.com/avelez-espino/Ck-ForecastR-Releases/wiki/2---Structure)
+* [Structure](https://github.com/avelez-espino/Ck-ForecastR-Releases/wiki/2---Structure)
 
 
 
