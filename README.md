@@ -13,7 +13,7 @@ Note: The links below will take you away from this page, unless you open them wi
 #### I would like to play with the latest prototype
 
 * Go to the [*ForecastR* App](https://solv-code.shinyapps.io/forecastr/)
-* Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_1.zip) (Open this link in a new tab, then click the *Download* button)
+* Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_11.zip) (Open this link in a new tab, then click the *Download* button)
 * Install the package (*To be included - ETA TBD*)
 
 #### I would like to find out more about *ForecastR*
@@ -33,6 +33,6 @@ Notable pages are:
 * To report a bug or request a feature, start a new issue [here](https://github.com/avelez-espino/Ck-ForecastR-Releases/issues) using either the *Bug* label or
 the *Feature Request* label. To select a label, choose from the drop-menu on the right of the screen after you start a new issue.
 * To provide feedback on the current prototype, leave a comment at [this thread](https://github.com/avelez-espino/Ck-ForecastR-Releases/issues/4)
-* To add your system information to the "Verified Version Tracker", edit the first entry at [this thread](https://github.com/SOLV-Code/Ck-ForecastR-Releases/issues/2)
+* To add your system information to the "Verified Version Tracker", edit the first entry at [this thread](https://github.com/avelez-espino/Ck-ForecastR-Releases/issues/2)
 
 
