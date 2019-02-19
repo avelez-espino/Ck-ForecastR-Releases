@@ -1,9 +1,7 @@
 ## Ck-ForecastR-Releases
 Repository for major releases, feedback, and bug reports.
 
-*Note*: The code for the *ForecastR* package is still under development, and
-does not live here. Whenever we get to a major release milestone, we make the
-code available here.  This repository is where the development team interacts with the End User Community.
+*Note*: The code for the *ForecastR* package is continuously evolving. Whenever we get to a major release milestone, we make the code available here.  This repository is where the development team interacts with the End User Community.
 
 *ForecastR* is available in 2 configurations:
 
@@ -24,8 +22,7 @@ Note: The links below will take you away from this page, unless you open them wi
 
 #### I would like to find out more about *ForecastR*
 
-The [Wiki](https://github.com/avelez-espino/Ck-ForecastR-Releases/wiki) describes the evolution of *ForecastR*, current developments,
-and planned features.
+The [Wiki](https://github.com/avelez-espino/Ck-ForecastR-Releases/wiki) describes the evolution of *ForecastR*, current developments,and planned features.
 
 Notable pages are:
 
