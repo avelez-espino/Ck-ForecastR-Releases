@@ -18,8 +18,9 @@ Note: The links below will take you away from this page, unless you open them wi
 #### I would like to play with the latest prototype
 
 * Run the app on the server: Go to the [*ForecastR* App](https://solv-code.shinyapps.io/forecastr/)
-* Install the package (*To be included - ETA TBD*)
-* Run the app locally or access the functions: * Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_11.zip) (Open this link in a new tab, then click the *Download* button)
+* Install the package: Go to the [*ForecastR* Package](https://github.com/MichaelFolkes/forecastR_package)
+* Run the app locally: Download a [zip folder](Zipped_Releases/CK_ForecastR_Prototype2019_02_11.zip) (Open this link in a new tab, then click the *Download* button),
+	then run the *LaunchGUI.R* script.
 
 
 #### I would like to find out more about *ForecastR*
