@@ -35,7 +35,7 @@ library(moments)
 ?multiFC
 ?doBoot
 ?rankModels
-?plotModelFits
+?plotModelFit
 
 
 
@@ -70,7 +70,7 @@ data.withoutage <- prepData(data.withoutage.raw,out.labels="v2")
 
 # ------------------------------------------------
 # fit a few different models and calculate forecasts
-# Uses: filtModel(),calcFC(), plotModelFit()
+# Uses: fitModel(),calcFC(), plotModelFit()
 
 # Fit ARIMA model to the data set with age classes (no BoxCox transformation)
 arimafit.withage.nobc <- fitModel(model= "TimeSeriesArima", data = data.withage$data, settings = list(BoxCox=FALSE),tracing=FALSE)
