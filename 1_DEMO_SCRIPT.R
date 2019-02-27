@@ -117,6 +117,9 @@ arima.boot <- doBoot(data= data.withage, args.fitmodel= list(model= "TimeSeriesA
 head(arima.boot)
 
 
+forecastR:::box.plot(arima.boot)
+
+
 
 # ------------------------------------------
 # calculate several forecasts and rank the models
@@ -161,5 +164,51 @@ ranktest3 <- rankModels(multiresults.retro$retro.pm$retro.pm.bal, relative.bol=T
 ranktest1$Total
 ranktest2$Total
 ranktest3$Total
+
+
+
+
+
+
+
+#########################################################
+# Example of looping through multiple stocks (i.e. input file)
+
+
+
+# create a list of file names
+
+datafile.list <- c("SampleData/2017_Alsea_Esc.csv",
+	"SampleData/2017_Nehalem_Esc.csv",
+	"SampleData/GSH_Terminal_Run_2017.csv",
+	"SampleData/SampleFile_WithAge_ExclTotal.csv")
+
+
+
+# start a pdf
+pdf("Example_Output.pdf",onefile=TRUE,height=8.5,width=11)
+
+# loop through the files
+for(file.use in datafile.list){
+
+	print("------------------------")
+	print(file.use)
+	file.raw <- read.csv(file.use)  
+	file.prepped <- prepData(file.raw,out.labels="v2")
+
+
+		# Fit ARIMA model to the data set with age classes (no BoxCox transformation)
+		arimafit.withage.nobc <- fitModel(model= "TimeSeriesArima", data = file.prepped$data, settings = list(BoxCox=FALSE),tracing=FALSE)
+		arimafc.withage.nobc <- calcFC(fit.obj= arimafit.withage.nobc ,data =file.prepped$data, fc.yr= file.prepped$specs$forecastingyear,  settings = list(BoxCox=FALSE), tracing=TRUE)	
+		names(arimafc.withage.nobc)
+		arimafc.withage.nobc$pt.fc
+		plotModelFit(arimafit.withage.nobc, options= list(plot.which = "fitted_ts",age.which="all",plot.add=FALSE),fc.add = arimafc.withage.nobc)
+		title(main=paste(file.use, "ARIMA - No Box Cox"),outer=TRUE,line=-1)
+
+
+}
+
+#close the pdf
+dev.off()
 
 
