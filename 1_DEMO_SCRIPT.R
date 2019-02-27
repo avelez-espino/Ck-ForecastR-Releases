@@ -4,13 +4,16 @@
 # Another option is to use the shiny app at 
 # https://solv-code.shinyapps.io/forecastr/
 
-# ----------------------------
-# install and load the package
 
+
+# ----------------------------
+# OPTION1: install and load the package 
+if(TRUE){
 install.packages("devtools") # Install the devtools package
 library(devtools) # Load the devtools package.
 install_github("MichaelFolkes/forecastR_package",force=TRUE)
 library(forecastR)
+}
 
 # using force = TRUE, because wasn't picking up changes
 # or need to "build() before push"?
@@ -33,6 +36,22 @@ library(moments)
 ?doBoot
 ?rankModels
 ?plotModelFits
+
+
+
+# OPTION 2: LOAD FROM LOCAL FOLDER
+
+if(FALSE){
+
+# for local debugging, turn on this part and comment out the package install above
+path.use <- "../../R/"  # this is the path to your local copy of the forecastR modules 
+#(if you run this script inside the extracted zip folder, then use "App Files/R/"
+
+source(paste0(path.use,"3c_HelperFunctions_ModelSetup.R"))
+source.modules(path.use)
+
+}
+
 
 # --------------------------------
 # read in a data file SUBSTITUTE YOUR FILE PATH!
