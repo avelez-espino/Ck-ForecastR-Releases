@@ -57,7 +57,7 @@ source.modules(path.use)
 # read in a data file SUBSTITUTE YOUR FILE PATH!
 # Uses: read.csv(), preData()
 
-data.withage.raw <- read.csv("SampleData/SampleFile_WithAge_ExclTotal.csv")  
+data.withage.raw <- read.csv("SampleData/SampleFile_WithAge_ExclTotal.csv") 
 data.withoutage.raw <- read.csv("SampleData/SampleFile_WithoutAge.csv")  
 
 
@@ -102,6 +102,23 @@ sibreg.retro <- doRetro(model= "SibRegSimple", data = data.withage$data,
 names(sibreg.retro)
 sibreg.retro$retro.pm.bal
 sibreg.retro$retro.resids
+
+
+
+
+arima.retro <- doRetro(model= "TimeSeriesArima", data = data.withage$data, 
+				retro.settings = list(min.yrs=15), 
+				fit.settings = list(BoxCox=FALSE), 
+				fc.settings = list(BoxCox=FALSE),
+				tracing=FALSE,out.type="short")
+
+names(arima.retro)
+arima.retro$retro.pm.bal
+arima.retro$retro.resids
+
+
+
+
 
 
 
