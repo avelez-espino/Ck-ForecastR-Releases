@@ -5,6 +5,7 @@
 # https://solv-code.shinyapps.io/forecastr/
 
 
+# TWO OPTIONS FOR SET-UP
 
 # ----------------------------
 # OPTION1: install and load the package 
@@ -44,27 +45,31 @@ library(moments)
 if(FALSE){
 
 # for local debugging, turn on this part and comment out the package install above
-path.use <- "../../R/"  # this is the path to your local copy of the forecastR modules 
+path.use <- "R_LocalOnly/"  # this is the path to your local copy of the forecastR modules 
 #(if you run this script inside the extracted zip folder, then use "App Files/R/"
 
 source(paste0(path.use,"3c_HelperFunctions_ModelSetup.R"))
 source.modules(path.use)
+
+# these should be handled as dependencies
+library(forecast)
+library(meboot)
+library(moments)
+
 
 }
 
 
 # --------------------------------
 # read in a data file SUBSTITUTE YOUR FILE PATH!
-# Uses: read.csv(), preData()
+# Uses: read.csv(), prepData()
+# Note that some functions below use the raw data, some the prepped data
 
 data.withage.raw <- read.csv("SampleData/SampleFile_WithAge_ExclTotal.csv") 
 data.withoutage.raw <- read.csv("SampleData/SampleFile_WithoutAge.csv")  
 
-
-
 data.withage <- prepData(data.withage.raw,out.labels="v2")
 data.withoutage <- prepData(data.withoutage.raw,out.labels="v2")
-
 
 
 
@@ -74,14 +79,28 @@ data.withoutage <- prepData(data.withoutage.raw,out.labels="v2")
 
 # Fit ARIMA model to the data set with age classes (no BoxCox transformation)
 arimafit.withage.nobc <- fitModel(model= "TimeSeriesArima", data = data.withage$data, settings = list(BoxCox=FALSE),tracing=FALSE)
+
+#check the components of the model fit
+names(arimafit.withage.nobc)
+names(arimafit.withage.nobc$"Age 4")
+
+# extract the residuals (obs-fitted)
+arimafit.withage.nobc$"Age 4"$residuals
+
+
+# calculate the forecast based on that model fit
 arimafc.withage.nobc <- calcFC(fit.obj= arimafit.withage.nobc ,data =data.withage$data, fc.yr= data.withage$specs$forecastingyear,  settings = list(BoxCox=FALSE), tracing=TRUE)	
+
+# check the components of the fc output
 names(arimafc.withage.nobc)
 arimafc.withage.nobc$pt.fc
+
+
 plotModelFit(arimafit.withage.nobc, options= list(plot.which = "fitted_ts",age.which="all",plot.add=FALSE),fc.add = arimafc.withage.nobc)
 title(sub="ARIMA - No Box Cox")
 
 
-# Fit SIBREGSIMPLE model to the data set with age classes 
+# Fit the SIBREGSIMPLE model to the same data set with age classes 
 sibregfit.withage <- fitModel(model= "SibRegSimple", data = data.withage$data, settings = NULL ,tracing=FALSE)
 sibregfc.withage <- calcFC(fit.obj= sibregfit.withage ,data =data.withage$data, fc.yr= data.withage$specs$forecastingyear,  settings = NULL, tracing=TRUE)	
 plotModelFit(sibregfit.withage, options= list(plot.which = "fitted_ts",age.which="all",plot.add=FALSE),fc.add = sibregfc.withage)
@@ -99,11 +118,15 @@ sibreg.retro <- doRetro(model= "SibRegSimple", data = data.withage$data,
 				fc.settings = list(boot=NULL),
 				tracing=FALSE,out.type="short")
 
+# check the components of the retrospective output
 names(sibreg.retro)
-sibreg.retro$retro.pm.bal
+
+# extract the residuals from the retrospective
 sibreg.retro$retro.resids
 
 
+# extract one of the versions of the performance summary
+sibreg.retro$retro.pm.bal
 
 
 arima.retro <- doRetro(model= "TimeSeriesArima", data = data.withage$data, 
@@ -115,10 +138,6 @@ arima.retro <- doRetro(model= "TimeSeriesArima", data = data.withage$data,
 names(arima.retro)
 arima.retro$retro.pm.bal
 arima.retro$retro.resids
-
-
-
-
 
 
 
@@ -148,35 +167,45 @@ settings.use <- list(Naive1 = list(model.type="Naive",settings=list(avg.yrs=1)),
 				SibRegSimple = list(model.type="SibRegSimple",settings=NULL),
 				SibRegLogPower =  list(model.type="SibRegLogPower",settings=NULL),
 				SibRegKalman =  list(model.type="SibRegKalman",settings=NULL),
-				#TimeSeriesArimaBC = list(model.type="TimeSeriesArima",settings=list(BoxCox=TRUE)),
+				TimeSeriesArimaBC = list(model.type="TimeSeriesArima",settings=list(BoxCox=TRUE)),
 				TimeSeriesArimaNoBC = list(model.type="TimeSeriesArima",settings=list(BoxCox=FALSE)),
-				#TimeSeriesExpSmoothBC = list(model.type="TimeSeriesExpSmooth",settings=list(BoxCox=TRUE)),
+				TimeSeriesExpSmoothBC = list(model.type="TimeSeriesExpSmooth",settings=list(BoxCox=TRUE)),
 				TimeSeriesExpSmoothNoBC = list(model.type="TimeSeriesExpSmooth",settings=list(BoxCox=FALSE))
 				)
 
 
 
 multiresults.ptfconly <- multiFC(data.file=data.withage.raw,settings.list=settings.use,
-						do.retro=FALSE,do.boot=FALSE,out.type="short",
-						retro.min.yrs=15,tracing=FALSE)
+						do.retro=FALSE,retro.min.yrs=15,
+						out.type="short",
+						int.type = "None", int.n = 100, 
+						boot.type = "meboot",
+						tracing=FALSE)
 multiresults.ptfconly
 
 
 
 multiresults.retro <- multiFC(data.file=data.withage.raw,settings.list=settings.use,
-						do.retro=TRUE,do.boot=FALSE,out.type="short",
-						retro.min.yrs=15,tracing=FALSE)
+						do.retro=TRUE,retro.min.yrs=15,
+						out.type="short",
+						int.type = "None", int.n = 100, 
+						boot.type = "meboot",
+						tracing=FALSE)
 
+# check the components of the multifc output
 names(multiresults.retro$retro.pm)
+
+# extract the fc table
 multiresults.retro$table.ptfc
+
+# extract 1 version of the retrospective performance summary
 multiresults.retro[["retro.pm"]][["retro.pm.bal"]]
 
 
-
+# do three alternative model rankings
 ranktest1 <- rankModels(multiresults.retro$retro.pm$retro.pm.bal)
 ranktest2 <- rankModels(multiresults.retro$retro.pm$retro.pm.bal, columnToRank = c("MRE","MAE") )
 ranktest3 <- rankModels(multiresults.retro$retro.pm$retro.pm.bal, relative.bol=TRUE )
-
 
 ranktest1$Total
 ranktest2$Total
