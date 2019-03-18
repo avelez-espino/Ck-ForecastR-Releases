@@ -15,7 +15,7 @@ Note: The links below will take you away from this page, unless you open them wi
 
 #### I would like to play with the latest prototype
 
-* Run the app on the server: Go to the *ForecastR* App([SOLV server](https://solv-code.shinyapps.io/forecastr/),[PSC server](https://psc1.shinyapps.io/ForecastR/)), load in a data file, and explore the alternative forecast models.
+* Run the app on the server: Go to the *ForecastR* App ([SOLV server](https://solv-code.shinyapps.io/forecastr/), [PSC server](https://psc1.shinyapps.io/ForecastR/)), load in a data file, and explore the alternative forecast models.
 * Install the package: Go to the [*ForecastR* Package](https://github.com/MichaelFolkes/forecastR_package), then build a custom script to automate your analyses (like this [demo script](https://github.com/avelez-espino/Ck-ForecastR-Releases/blob/master/1_DEMO_SCRIPT.R))
 * Run the app locally: Download a [zip folder](https://github.com/avelez-espino/Ck-ForecastR-Releases/blob/master/Zipped_Releases/CK_ForecastR_prototype2019_03_13.zip) (Open this link in a new tab, then click the *Download* button),
 	then run the *LaunchGUI.R* script.
