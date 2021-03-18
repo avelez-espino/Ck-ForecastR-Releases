@@ -1,7 +1,7 @@
 ## Ck-ForecastR-Releases
 Repository for major releases, feedback, and bug reports.
 
-For details, check out the latest **[ForecastR Report](https://www.psc.org/publications/fund-backgrounders-final-reports/#585-very-high-priority-chinook-1546448461)**
+For details, check out the latest **[ForecastR Report](https://www.researchgate.net/profile/L-Velez-espino/publication/331877146_ForecastR_tools_to_automate_forecasting_procedures_for_salmonid_terminal_run_and_escapement/links/5c91696592851cf0ae8995d7/ForecastR-tools-to-automate-forecasting-procedures-for-salmonid-terminal-run-and-escapement.pdf)**
 
 
 **What's New?**
