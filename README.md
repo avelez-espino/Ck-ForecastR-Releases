@@ -1,7 +1,7 @@
 ## Ck-ForecastR-Releases
 Repository for major releases, feedback, and bug reports.
 
-Fo details, check out the latest [ForecastR Report](https://www.psc.org/publications/fund-backgrounders-final-reports/#585-very-high-priority-chinook-1546448461)
+For details, check out the latest [ForecastR Report](https://www.psc.org/publications/fund-backgrounders-final-reports/#585-very-high-priority-chinook-1546448461)
 
 
 **What's New?**
